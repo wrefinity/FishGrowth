@@ -1,0 +1,8 @@
+venv
+.env
+celerybeat*
+**/__pycache__
+**/**/__pycache__
+**/**/**/__pycache__
+model/boot_aqua_farm
+model/boot_aqua_farm.zip

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-6">
+        <form id="predictionForm">
+          <div class="form-group">
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="temperature" placeholder="Enter the Temperature"><br>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="turbidity"  placeholder="Enter the Turbidity"><br>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="oxygen"  placeholder="Enter the Disolved oxygen"><br>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="ph_value"  placeholder="Enter the PH value"><br>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="ammonia"  placeholder="Enter the Ammonia"><br>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="nitrate"  placeholder="Enter the Nitrate"><br>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="population"  placeholder="Enter the Population"><br>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="length"  placeholder="Enter the Length"><br>
+          </div>
+          <input class="b mb-5 p-2 rounded bg-success text-white" type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+  <!-- children templates extends this -->
+  {% block js %}
+  <!-- scripts -->
+  <script src="{{url_for('static', path='/prediction.js')}}" type="text/javascript"></script>
+
+  {% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %}
+<div>
+  {% if predictions %}
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Temperature</th>
+      <th>Turbidity</th>
+      <th>Oxygen</th>
+      <th>PA Value</th>
+      <th>Ammonia</th>
+      <th>Nitrate</th>
+      <th>Popular</th>
+      <th>Length</th>
+      <th>Weight</th>
+    </tr>
+    {% for prediction in predictions %}
+    <tr>
+      <td>{{ prediction.id }}</td>
+      <td>{{ prediction.temperature }}</td>
+      <td>{{ prediction.turbidity }}</td>
+      <td>{{ prediction.oxygen }}</td>
+      <td>{{ prediction.ph_value }}</td>
+      <td>{{ prediction.ammonia }}</td>
+      <td>{{ prediction.nitrate }}</td>
+      <td>{{ prediction.population }}</td>
+      <td>{{ prediction.length }}</td>
+      <td>{{ prediction.weight }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p>No prediction records available.</p>
+  {% endif %}
+</div>
+{% endblock %}
