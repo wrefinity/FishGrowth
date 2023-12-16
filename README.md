@@ -1,5 +1,4 @@
-# Sample Boiler Plate for FAST API and Celery
-
+# Fish Growth Rate
 
 ## create virtual env
 ```

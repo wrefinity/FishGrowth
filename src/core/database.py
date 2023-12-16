@@ -3,8 +3,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from src.core.config import db_url
 
-DATABASE_URL = "sqlite:///./fish.db"
+DATABASE_URL = f"sqlite:///./{db_url}"
 
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})

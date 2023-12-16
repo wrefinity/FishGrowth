@@ -17,6 +17,14 @@ from src.core.models import User, Prediction
 from src.core.schemas import UserSchema, PredictionSchema, MainSchema, Token
 from src.core.connect import get_db
 from src.core.auth import authenticate_user, create_token
+from src.core.config import (
+    admin_email,
+    admin_pass,
+    admin_fullname,
+    admin_username,
+    admin_phone,
+    admin_perm
+)
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -36,12 +44,12 @@ def entry():
 # Function to create an admin user
 def create_admin_user(db_session):
     admin_user = User(
-        email="admin@admin.com",
-        password= bcrypt.hash("pass1234"),
-        username="admin",
-        fullname="Admin Admin",
-        phone="1234567890",
-        permissions=["admin"]
+        email=admin_email,
+        password= admin_pass,
+        username=admin_username,
+        fullname=admin_fullname,
+        phone=admin_phone,
+        permissions=[admin_perm]
     )
     db_session.add(admin_user)
     db_session.commit()

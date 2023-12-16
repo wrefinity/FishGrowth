@@ -11,8 +11,13 @@ print(BASE_DIR)
 load_dotenv()
 
 
-mongo_url = os.getenv("MONGODB_CONN_STRING")
-db_name = os.getenv("DB_NAME")
+db_url = os.getenv("DB_NAME")
+admin_email = os.getenv("ADMIN_EMAIL")
+admin_pass = os.getenv("ADMIN_PASS")
+admin_fullname = os.getenv("ADMIN_FULLNAME")
+admin_username = os.getenv("ADMIN_USERNAME")
+admin_phone = os.getenv("ADMIN_PHONE")
+admin_perm = os.getenv("ADMIN_PERMISSIONS")
 
 
 def to_camel_case(snake_str: str):
