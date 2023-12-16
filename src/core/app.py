@@ -5,11 +5,10 @@ from beanie import PydanticObjectId
 import pandas as pd
 from typing import List
 from fastapi import (
-    APIRouter, Request, Request, Response, File, HTTPException, Form, Depends
+    APIRouter, Request, Request, Response, Form, Depends
 )
 from sqlalchemy.orm import Session
-from fastapi.responses import JSONResponse, StreamingResponse
-from fastapi.security import OAuth2PasswordBearer, SecurityScopes
+from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
 from passlib.hash import bcrypt
 # define modules
@@ -30,7 +29,6 @@ router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
 
-
 # Load the trained model
 with open('model/rf_model.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
@@ -45,7 +43,7 @@ def entry():
 def create_admin_user(db_session):
     admin_user = User(
         email=admin_email,
-        password= admin_pass,
+        password= bcrypt.hash(admin_pass),
         username=admin_username,
         fullname=admin_fullname,
         phone=admin_phone,
@@ -69,7 +67,6 @@ async def homex(request: Request):
 @router.post("/signup")
 async def add_user(request: Request,  user_input: UserSchema, db: Session = Depends(get_db)) -> UserSchema:
     try:
-        print(user_input)  # Print the request data for debugging
         hashed_password = bcrypt.hash(user_input.password)
         
         user = User(
@@ -119,7 +116,7 @@ async def login_user(request:Request, login_user:MainSchema,  db: Session = Depe
     return JSONResponse(content=content)
 
 
-# Route to save a prediction record
+# ==================== prediction session =================
 @router.post("/predict")
 async def predict(
     request:Request, 
