@@ -14,17 +14,19 @@ class UserSchema(MainSchema):
 
 # authentication token
 class Token(BaseModel):
+    '''token schema'''
     access_token: str
     token_type: str
 
 
 class PredictionSchema(BaseModel):
-    temperature:float
-    turbidity:int
-    oxygen:float
-    ph_value:float
-    ammonia:float
-    nitrate:int
-    population:int
-    length:float
-    weight:float | None = None
+    '''predict schema'''
+    temperature: float
+    turbidity: int
+    oxygen: float
+    ph_value: float
+    ammonia: float
+    nitrate: int
+    population: int
+    length: float
+    weight: float | None = None

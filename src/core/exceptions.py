@@ -10,3 +10,8 @@ EXCEPTION_401_PERM = HTTPException(
                     status_code=status.HTTP_401_UNAUTHORIZED,
                     detail='Permissions'
                 )
+
+EXCEPTION_403_PERM = HTTPException(
+        status_code=403,
+        detail="Permission denied. Only admins can access this endpoint."
+)
